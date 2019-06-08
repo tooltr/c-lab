@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+using namespace std;
 
 struct student //结构体
 {
@@ -153,9 +154,9 @@ void chazhao(struct student s[], int n) //查找函数
         m2 = m2 + 1;
         if (m2 == 1)
         {
-          printf("\n姓名\t\t学号\t数学\t英语\t语文\t程序\n");
+          printf("\n姓名\t\t学号\t数学\t英语\t语文\t程序\t总分\n");
         }
-        printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\n", s[i].name, s[i].number, s[i].math, s[i].english, s[i].chinese, s[i].program);
+        printf("%s\t\t%s\t%.1lf\t%.1lf\t%.1lf\t%.1lf\t%.1lf\n", s[i].name, s[i].number, s[i].math, s[i].english, s[i].chinese, s[i].program, s[i].math + s[i].english + s[i].chinese + s[i].program);
       }
     }
     if (m2 == 0)
