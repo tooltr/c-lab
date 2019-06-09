@@ -374,7 +374,7 @@ void tongji(struct student s[], int n)
  //统计函数
 {
   printf("统计信息如下：\n");
-  printf("\n姓名\t\t学号\t\t总分\t平均分\n");3 i 
+  printf("\n姓名\t\t学号\t\t总分\t平均分\n");
   allAndAver(s, n);
   Max(s, n);
   Min(s, n);
