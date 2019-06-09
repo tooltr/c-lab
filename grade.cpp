@@ -1,36 +1,37 @@
+#include<stdio.h>
 #include <iostream>
 #include <cstring>
-using namespace std;
 
-struct student //ç»“æ„ä½“
+struct student //½á¹¹Ìå
 {
-  char name[20];   //å§“å
-  char number[20]; //å­¦å·
-  double math;     //æ•°å­¦
-  double english;  //è‹±è¯­
-  double chinese;  //è¯­æ–‡
-  double program;  //ç¨‹åº
+  char name[20];   //ĞÕÃû
+  char number[20]; //Ñ§ºÅ
+  double math;     //ÊıÑ§
+  double english;  //Ó¢Óï
+  double chinese;  //ÓïÎÄ
+  double program;  //³ÌĞò
 } s[50];
 
-void head() //ç•Œé¢
+void head() //½çÃæ
 {
   printf(
       "**********************************************************************\n"
       "** **\n"
       "** **\n"
-      "** å­¦ç”Ÿæˆç»©ç®¡ç†ç³»ç»Ÿ **\n"
+      "** Ñ§Éú³É¼¨¹ÜÀíÏµÍ³ **\n"
       "** **\n"
-      "** 1.ä¿¡æ¯å½•å…¥ **\n"
-      "** 2.ä¿¡æ¯ç»Ÿè®¡ **\n"
-      "** 3.ä¿¡æ¯æµè§ˆ **\n"
-      "** 4.ä¿¡æ¯æŸ¥è¯¢ **\n"
-      "** 5.ä¿¡æ¯æ’åº **\n"
-      "** 6.ä¿¡æ¯åˆ é™¤ **\n"
-      "** 0.é€€å‡ºç³»ç»Ÿ **\n"
+      "** 1.ĞÅÏ¢Â¼Èë **\n"
+      "** 2.ĞÅÏ¢Í³¼Æ **\n"
+      "** 3.ĞÅÏ¢ä¯ÀÀ **\n"
+      "** 4.ĞÅÏ¢²éÑ¯ **\n"
+      "** 5.ĞÅÏ¢ÅÅĞò **\n"
+      "** 6.ĞÅÏ¢É¾³ı **\n"
+      "** 0.ÍË³öÏµÍ³ **\n"
       "** **\n"
       "**********************************************************************\n");
 }
-void daoru(struct student s[], int *n) //æ–‡ä»¶å¯¼å…¥å‡½æ•°
+void daoru(struct student s[], int *n)
+ //ÎÄ¼şµ¼Èëº¯Êı
 {
   FILE *p;
   int i = *n;
@@ -55,7 +56,7 @@ void daochu(struct student s[], int n)
   int i = 0;
   if ((p = fopen("data.txt", "w")) == NULL)
   {
-    printf("æ— æ³•æ‰“å¼€æ­¤æ–‡ä»¶ï¼");
+    printf("ÎŞ·¨´ò¿ª´ËÎÄ¼ş£¡");
   }
   else
   {
@@ -68,23 +69,25 @@ void daochu(struct student s[], int n)
   }
   fclose(p);
 }
-void dayin(struct student s[], int n) //æ˜¾ç¤ºæ‰€æœ‰ä¿¡æ¯
+void dayin(struct student s[], int n)
+ //ÏÔÊ¾ËùÓĞĞÅÏ¢
 {
   int i;
   double all = 0.0;
-  printf("\nå§“å\t\tå­¦å·\t\tæ•°å­¦\tè‹±è¯­\tè¯­æ–‡\tç¨‹åº\tæ€»åˆ†\n");
+  printf("\nĞÕÃû\t\tÑ§ºÅ\t\tÊıÑ§\tÓ¢Óï\tÓïÎÄ\t³ÌĞò\t×Ü·Ö\n");
   for (i = 0; i < n; i++)
   {
     all = s[i].math + s[i].english + s[i].chinese + s[i].program;
     printf("%s\t\t%s\t\t%.1lf\t%.1lf\t%.1lf\t%.1lf\t%.1lf\n", s[i].name, s[i].number, s[i].math, s[i].english, s[i].chinese, s[i].program, all);
   }
 }
-void shuru(struct student s[], int *n) //ä¿¡æ¯è¾“å…¥å‡½æ•°
+void shuru(struct student s[], int *n)
+ //ĞÅÏ¢ÊäÈëº¯Êı
 {
   int i = *n, j, k, m;
-  printf("è¯·è¾“å…¥å­¦ç”Ÿå§“å:");
+  printf("ÇëÊäÈëÑ§ÉúĞÕÃû:");
   scanf("%s", s[i].name);
-  printf("è¯·è¾“å…¥å­¦ç”Ÿå­¦å·:");
+  printf("ÇëÊäÈëÑ§ÉúÑ§ºÅ:");
   for (j = 0;; j++)
   {
     m = 0;
@@ -94,7 +97,7 @@ void shuru(struct student s[], int *n) //ä¿¡æ¯è¾“å…¥å‡½æ•°
       if (strcmp(s[i].number, s[k].number) == 0)
       {
         m = m + 1;
-        printf("å­¦å·é‡å¤ï¼Œè¯·é‡æ–°è¾“å…¥å­¦å·:");
+        printf("Ñ§ºÅÖØ¸´£¬ÇëÖØĞÂÊäÈëÑ§ºÅ:");
         break;
       }
     }
@@ -103,21 +106,23 @@ void shuru(struct student s[], int *n) //ä¿¡æ¯è¾“å…¥å‡½æ•°
       break;
     }
   }
-  printf("è¯·è¾“å…¥æ•°å­¦æˆç»©:");
+  printf("ÇëÊäÈëÊıÑ§³É¼¨:");
   scanf("%lf", &s[i].math);
-  printf("è¯·è¾“å…¥è‹±è¯­æˆç»©:");
+  printf("ÇëÊäÈëÓ¢Óï³É¼¨:");
   scanf("%lf", &s[i].english);
-  printf("è¯·è¾“å…¥è¯­æ–‡æˆç»©:");
+  printf("ÇëÊäÈëÓïÎÄ³É¼¨:");
   scanf("%lf", &s[i].chinese);
-  printf("è¯·è¾“å…¥ç¨‹åºæˆç»©:");
+  printf("ÇëÊäÈë³ÌĞò³É¼¨:");
   scanf("%lf", &s[i].program);
-  printf("æ·»åŠ ä¿¡æ¯æˆåŠŸï¼\n");
+  printf("Ìí¼ÓĞÅÏ¢³É¹¦£¡\n");
   *n = *n + 1;
   daochu(s, *n);
 }
-void paixu(struct student s[], int n) //æ’åºå‡½æ•°
+void paixu(struct student s[], int n)
+ //ÅÅĞòº¯Êı
 {
   int i, j;
+  //¶¨Òå±äÁ¿ i j i±íÊ¾Ñ§ÉúÊıÁ¿ j ±íÊ¾Ñ§Éú³É¼¨ 
   double all1, all2;
   struct student stu;
   for (i = 0; i < n - 1; i++)
@@ -131,42 +136,48 @@ void paixu(struct student s[], int n) //æ’åºå‡½æ•°
         stu = s[i];
         s[i] = s[j];
         s[j] = stu;
+       //Ñ¡ÔñÅÅĞò·¨ÊµÏÖÑ§Éú³É¼¨ÅÅĞò 
       }
     }
   }
-  printf("æ’åºåçš„æ•°æ®ï¼š\n");
+  printf("ÅÅĞòºóµÄÊı¾İ£º\n");
   dayin(s, n);
 }
-void chazhao(struct student s[], int n) //æŸ¥æ‰¾å‡½æ•°
+void chazhao(struct student s[], int n)
+ //²éÕÒº¯Êı
 {
   char name[20], num[20];
+  //¶¨ÒåµÄÊı×é¿ÉÒÔÊäÈëÊı×Ö ×ÖÄ¸ »ò×Ö·û 
   int m1, m2 = 0, i, j;
-  printf("1.æŒ‰å§“åæŸ¥æ‰¾\n2.æŒ‰å­¦å·æŸ¥æ‰¾\né€‰æ‹©æŸ¥è¯¢æ–¹å¼ï¼ˆ1æˆ–2ï¼‰:");
+  printf("1.°´ĞÕÃû²éÕÒ\n2.°´Ñ§ºÅ²éÕÒ\nÑ¡Ôñ²éÑ¯·½Ê½£¨1»ò2£©:");
   scanf("%d", &m1);
   if (m1 == 1)
   {
-    printf("è¯·è¾“å…¥æ‚¨è¦æŸ¥æ‰¾çš„å­¦ç”Ÿå§“å:");
+    printf("ÇëÊäÈëÄúÒª²éÕÒµÄÑ§ÉúĞÕÃû:");
     scanf("%s", name);
     for (i = 0; i < n; i++)
     {
       if (strcmp(s[i].name, name) == 0)
+      //Èç¹ûÊäÈëµÄĞÅÏ¢ÎªÕæÔòÊä³öÏà¹ØĞÅÏ¢ 
       {
         m2 = m2 + 1;
         if (m2 == 1)
         {
-          printf("\nå§“å\t\tå­¦å·\tæ•°å­¦\tè‹±è¯­\tè¯­æ–‡\tç¨‹åº\tæ€»åˆ†\n");
+          printf("\nĞÕÃû\t\tÑ§ºÅ\tÊıÑ§\tÓ¢Óï\tÓïÎÄ\t³ÌĞò\t×Ü·Ö\n");
         }
-        printf("%s\t\t%s\t%.1lf\t%.1lf\t%.1lf\t%.1lf\t%.1lf\n", s[i].name, s[i].number, s[i].math, s[i].english, s[i].chinese, s[i].program, s[i].math + s[i].english + s[i].chinese + s[i].program);
+        printf("%s\t\t%s\t%.1lf\t%.1lf\t%.1lf\t%.1lf\t%.1lf\n",
+		s[i].name, s[i].number, s[i].math, s[i].english, s[i].chinese, s[i].program,
+		 s[i].math + s[i].english + s[i].chinese + s[i].program);
       }
     }
     if (m2 == 0)
     {
-      printf("æ²¡æœ‰æ­¤å­¦ç”Ÿä¿¡æ¯!\n");
+      printf("Ã»ÓĞ´ËÑ§ÉúĞÅÏ¢!\n");
     }
   }
   else if (m1 == 2)
   {
-    printf("è¯·è¾“å…¥æ‚¨è¦æŸ¥æ‰¾çš„å­¦ç”Ÿå­¦å·:");
+    printf("ÇëÊäÈëÄúÒª²éÕÒµÄÑ§ÉúÑ§ºÅ:");
     scanf("%s", num);
     j = 0;
     for (i = 0; i < n; i++)
@@ -176,22 +187,25 @@ void chazhao(struct student s[], int n) //æŸ¥æ‰¾å‡½æ•°
         m2 = m2 + 1;
         if (m2 == 1)
         {
-          printf("\nå§“å\t\tå­¦å·\tæ•°å­¦\tè‹±è¯­\tè¯­æ–‡\tç¨‹åº\n");
+          printf("\nĞÕÃû\t\tÑ§ºÅ\tÊıÑ§\tÓ¢Óï\tÓïÎÄ\t³ÌĞò\n");
         }
-        printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\n", s[i].name, s[i].number, s[i].math, s[i].english, s[i].chinese, s[i].program);
+         printf("%s\t\t%s\t%.1lf\t%.1lf\t%.1lf\t%.1lf\t%.1lf\n", 
+		 s[i].name, s[i].number, s[i].math, s[i].english, s[i].chinese, s[i].program, 
+		 s[i].math + s[i].english + s[i].chinese + s[i].program);
       }
     }
     if (m2 == 0)
     {
-      printf("æ²¡æœ‰æ­¤å­¦ç”Ÿä¿¡æ¯!\n");
+      printf("Ã»ÓĞ´ËÑ§ÉúĞÅÏ¢!\n");
     }
   }
 }
-void shanchu(struct student s[], int *n) //åˆ é™¤å‡½æ•°
+void shanchu(struct student s[], int *n)
+ //É¾³ıº¯Êı
 {
   char num[20];
   int m = 0, i, j;
-  printf("è¯·è¾“å…¥æ‚¨è¦åˆ é™¤çš„å­¦ç”Ÿå­¦å·:");
+  printf("ÇëÊäÈëÄúÒªÉ¾³ıµÄÑ§ÉúÑ§ºÅ:");
   scanf("%s", num);
   for (i = 0; i <= *n; i++)
   {
@@ -201,21 +215,24 @@ void shanchu(struct student s[], int *n) //åˆ é™¤å‡½æ•°
       for (j = i; j < *n; j++)
       {
         s[j] = s[j + 1];
+    //½á¹¹ÌåÕûÌå¸³Öµ½«ºóÒ»Î»Ñ§Éú³É¼¨µÄĞÅÏ¢¿½±´·ÅÈëÇ°Ò»Î»Ñ§ÉúµÄ³É¼¨´æ´¢Î»ÖÃ 
       }
       *n = *n - 1;
+    //É¾³ıºóÑ§ÉúÑ§Éú×ÜÊı¼õÒ» 
     }
   }
   if (m == 0)
   {
-    printf("æ²¡æœ‰æ­¤å­¦ç”Ÿä¿¡æ¯!\n");
+    printf("Ã»ÓĞ´ËÑ§ÉúĞÅÏ¢!\n");
   }
   else
   {
     daochu(s, *n);
-    printf("åˆ é™¤å®Œæ¯•!\n");
+    printf("É¾³ıÍê±Ï!\n");
   }
 }
 void allAndAver(struct student s[], int n)
+//×Ü·ÖºÍÆ½¾ù·ÖÍ³¼Æ 
 {
   int i;
   double all = 0.0, aver = 0.0;
@@ -226,7 +243,8 @@ void allAndAver(struct student s[], int n)
     printf("%s\t\t%s\t\t%.1lf\t%.1lf\n", s[i].name, s[i].number, all, aver);
   }
 }
-void Fail(struct student s[], int n) //ç»Ÿè®¡å•ç§‘ä¸åŠæ ¼äººæ•°
+void Fail(struct student s[], int n)
+ //Í³¼Æµ¥¿Æ²»¼°¸ñÈËÊı
 {
   int i, fail[4] = {0};
   for (i = 0; i < n; i++)
@@ -248,13 +266,14 @@ void Fail(struct student s[], int n) //ç»Ÿè®¡å•ç§‘ä¸åŠæ ¼äººæ•°
       fail[3]++;
     }
   }
-  printf("\nä¸åŠæ ¼ä¿¡æ¯ï¼š\n");
-  printf("æ•°å­¦ä¸åŠæ ¼çš„äººæ•°ä¸ºï¼š%däºº\n", fail[0]);
-  printf("è‹±è¯­ä¸åŠæ ¼çš„äººæ•°ä¸ºï¼š%däºº\n", fail[1]);
-  printf("è¯­æ–‡ä¸åŠæ ¼çš„äººæ•°ä¸ºï¼š%däºº\n", fail[2]);
-  printf("ç¨‹åºä¸åŠæ ¼çš„äººæ•°ä¸ºï¼š%däºº\n", fail[3]);
+  printf("\n²»¼°¸ñĞÅÏ¢£º\n");
+  printf("ÊıÑ§²»¼°¸ñµÄÈËÊıÎª£º%dÈË\n", fail[0]);
+  printf("Ó¢Óï²»¼°¸ñµÄÈËÊıÎª£º%dÈË\n", fail[1]);
+  printf("ÓïÎÄ²»¼°¸ñµÄÈËÊıÎª£º%dÈË\n", fail[2]);
+  printf("³ÌĞò²»¼°¸ñµÄÈËÊıÎª£º%dÈË\n", fail[3]);
 }
-void Max(struct student s[], int n) //ç»Ÿè®¡å•ç§‘æœ€é«˜åˆ†äººæ•°
+void Max(struct student s[], int n)
+ //Í³¼Æµ¥¿Æ×î¸ß·ÖÈËÊı
 {
   int i, counter[4] = {0};
   double max[4] = {s[0].math, s[0].english, s[0].chinese, s[0].program};
@@ -296,13 +315,14 @@ void Max(struct student s[], int n) //ç»Ÿè®¡å•ç§‘æœ€é«˜åˆ†äººæ•°
       counter[3]++;
     }
   }
-  printf("\næœ€é«˜åˆ†ä¿¡æ¯ï¼š\n");
-  printf("æ•°å­¦æœ€é«˜åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", max[0], counter[0]);
-  printf("è‹±è¯­æœ€é«˜åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", max[1], counter[1]);
-  printf("è¯­æ–‡æœ€é«˜åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", max[2], counter[2]);
-  printf("ç¨‹åºæœ€é«˜åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", max[3], counter[3]);
+  printf("\n×î¸ß·ÖĞÅÏ¢£º\n");
+  printf("ÊıÑ§×î¸ß·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", max[0], counter[0]);
+  printf("Ó¢Óï×î¸ß·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", max[1], counter[1]);
+  printf("ÓïÎÄ×î¸ß·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", max[2], counter[2]);
+  printf("³ÌĞò×î¸ß·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", max[3], counter[3]);
 }
-void Min(struct student s[], int n) //ç»Ÿè®¡å•ç§‘æœ€ä½åˆ†äººæ•°
+void Min(struct student s[], int n)
+ //Í³¼Æµ¥¿Æ×îµÍ·ÖÈËÊı
 {
   int i, counter[4] = {0};
   double min[4] = {s[0].math, s[0].english, s[0].chinese, s[0].program};
@@ -344,22 +364,24 @@ void Min(struct student s[], int n) //ç»Ÿè®¡å•ç§‘æœ€ä½åˆ†äººæ•°
       counter[3]++;
     }
   }
-  printf("\næœ€ä½åˆ†ä¿¡æ¯ï¼š\n");
-  printf("æ•°å­¦æœ€ä½åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", min[0], counter[0]);
-  printf("è‹±è¯­æœ€ä½åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", min[1], counter[1]);
-  printf("è¯­æ–‡æœ€ä½åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", min[2], counter[2]);
-  printf("ç¨‹åºæœ€ä½åˆ†ä¸ºï¼š%.1lf, äººæ•°ä¸ºï¼š%däºº\n", min[3], counter[3]);
+  printf("\n×îµÍ·ÖĞÅÏ¢£º\n");
+  printf("ÊıÑ§×îµÍ·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", min[0], counter[0]);
+  printf("Ó¢Óï×îµÍ·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", min[1], counter[1]);
+  printf("ÓïÎÄ×îµÍ·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", min[2], counter[2]);
+  printf("³ÌĞò×îµÍ·ÖÎª£º%.1lf, ÈËÊıÎª£º%dÈË\n", min[3], counter[3]);
 }
-void tongji(struct student s[], int n) //ç»Ÿè®¡å‡½æ•°
+void tongji(struct student s[], int n)
+ //Í³¼Æº¯Êı
 {
-  printf("ç»Ÿè®¡ä¿¡æ¯å¦‚ä¸‹ï¼š\n");
-  printf("\nå§“å\t\tå­¦å·\t\tæ€»åˆ†\tå¹³å‡åˆ†\n");
+  printf("Í³¼ÆĞÅÏ¢ÈçÏÂ£º\n");
+  printf("\nĞÕÃû\t\tÑ§ºÅ\t\t×Ü·Ö\tÆ½¾ù·Ö\n");3 i 
   allAndAver(s, n);
   Max(s, n);
   Min(s, n);
   Fail(s, n);
 }
-int main() //ä¸»å‡½æ•°
+int main()
+ //Ö÷º¯Êı
 {
   int k, n = 0;
   daoru(s, &n);
@@ -367,7 +389,7 @@ int main() //ä¸»å‡½æ•°
   while (1)
   {
     head();
-    printf("\nè¯·æŒ‰å¯¹åº”çš„é”®é€‰æ‹©ç›¸åº”çš„åŠŸèƒ½:");
+    printf("\nÇë°´¶ÔÓ¦µÄ¼üÑ¡ÔñÏàÓ¦µÄ¹¦ÄÜ:");
     scanf("%d", &k);
     switch (k)
     {
@@ -390,13 +412,11 @@ int main() //ä¸»å‡½æ•°
       shanchu(s, &n);
       break;
     case 0:
-      exit(1);
       break;
     default:
-      printf("è¯·è¾“å…¥æ­£ç¡®çš„å‘½ä»¤!\n");
+      printf("ÇëÊäÈëÕıÈ·µÄÃüÁî!\n");
     }
-    system("pause");
-    system("cls");
   }
   return 0;
 }
+
